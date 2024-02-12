@@ -553,6 +553,7 @@ class PruningConfig:
     additional_datasets: Tuple[str] = tuple()
     run_pre_test: bool = True
     recalculate_activations: bool = True
+    evaluate_after_pruning: bool = True
 
     wandb_entity: str = "seperability"
     wandb_project: str = "separability-compare"

@@ -100,6 +100,110 @@ class DatasetFilters:
             return str(example["fine_label"]) not in rocket_ids
         rocketless_dataset = _dataset.filter(filter_rocket_out_example)
         return rocketless_dataset
+    
+    @staticmethod
+    def filter_fish(_dataset):
+        fish_id = "1"
+        def filter_fish_example(example):
+            return str(example["coarse_label"]) == fish_id
+        fish_dataset = _dataset.filter(filter_fish_example)
+        return fish_dataset
+    
+    @staticmethod
+    def filter_household_electrical_devices(_dataset):
+        household_electrical_devices_id = "5"
+        def filter_household_electrical_devices_example(example):
+            return str(example["coarse_label"]) == household_electrical_devices_id
+        household_electrical_devices_dataset = _dataset.filter(filter_household_electrical_devices_example)
+        return household_electrical_devices_dataset
+    
+    @staticmethod
+    def filter_household_furniture(_dataset):
+        household_furniture_id = "6"
+        def filter_household_furniture_example(example):
+            return str(example["coarse_label"]) == household_furniture_id
+        household_furniture_dataset = _dataset.filter(filter_household_furniture_example)
+        return household_furniture_dataset
+    
+    @staticmethod
+    def filter_insects(_dataset):
+        insects_id = "7"
+        def filter_insects_example(example):
+            return str(example["coarse_label"]) == insects_id
+        insects_dataset = _dataset.filter(filter_insects_example)
+        return insects_dataset
+    
+    @staticmethod
+    def filter_large_carnivores(_dataset):
+        large_carnivores_id = "8"
+        def filter_large_carnivores_example(example):
+            return str(example["coarse_label"]) == large_carnivores_id
+        large_carnivores_dataset = _dataset.filter(filter_large_carnivores_example)
+        return large_carnivores_dataset
+
+    @staticmethod
+    def filter_large_manmade_outdoor_things(_dataset):
+        large_manmade_outdoor_things_id = "9"
+        def filter_large_manmade_outdoor_things_example(example):
+            return str(example["coarse_label"]) == large_manmade_outdoor_things_id
+        large_manmade_outdoor_things_dataset = _dataset.filter(filter_large_manmade_outdoor_things_example)
+        return large_manmade_outdoor_things_dataset
+    
+    @staticmethod
+    def filter_large_natural_outdoor_scenes(_dataset):
+        large_natural_outdoor_scenes_id = "10"
+        def filter_large_natural_outdoor_scenes_example(example):
+            return str(example["coarse_label"]) == large_natural_outdoor_scenes_id
+        large_natural_outdoor_scenes_dataset = _dataset.filter(filter_large_natural_outdoor_scenes_example)
+        return large_natural_outdoor_scenes_dataset
+    
+    @staticmethod
+    def filter_large_omnivores_and_herbivores(_dataset):
+        large_omnivores_and_herbivores_id = "11"
+        def filter_large_omnivores_and_herbivores_example(example):
+            return str(example["coarse_label"]) == large_omnivores_and_herbivores_id
+        large_omnivores_and_herbivores_dataset = _dataset.filter(filter_large_omnivores_and_herbivores_example)
+        return large_omnivores_and_herbivores_dataset
+    
+    @staticmethod
+    def filter_medium_sized_mammals(_dataset):
+        medium_sized_mammals_id = "12"
+        def filter_medium_sized_mammals_example(example):
+            return str(example["coarse_label"]) == medium_sized_mammals_id
+        medium_sized_mammals_dataset = _dataset.filter(filter_medium_sized_mammals_example)
+        return medium_sized_mammals_dataset
+    
+    @staticmethod
+    def filter_non_insect_invertebrates(_dataset):
+        non_insect_invertebrates_id = "13"
+        def filter_non_insect_invertebrates_example(example):
+            return str(example["coarse_label"]) == non_insect_invertebrates_id
+        non_insect_invertebrates_dataset = _dataset.filter(filter_non_insect_invertebrates_example)
+        return non_insect_invertebrates_dataset
+    
+    @staticmethod
+    def filter_people(_dataset):
+        people_id = "14"
+        def filter_people_example(example):
+            return str(example["coarse_label"]) == people_id
+        people_dataset = _dataset.filter(filter_people_example)
+        return people_dataset
+    
+    @staticmethod
+    def filter_reptiles(_dataset):
+        reptiles_id = "15"
+        def filter_reptiles_example(example):
+            return str(example["coarse_label"]) == reptiles_id
+        reptiles_dataset = _dataset.filter(filter_reptiles_example)
+        return reptiles_dataset
+    
+    @staticmethod
+    def filter_small_mammals(_dataset):
+        small_mammals_id = "16"
+        def filter_small_mammals_example(example):
+            return str(example["coarse_label"]) == small_mammals_id
+        small_mammals_dataset = _dataset.filter(filter_small_mammals_example)
+        return small_mammals_dataset
 
     @staticmethod
     def filter_trees(_dataset):
@@ -296,6 +400,114 @@ def infer_dataset_config(dataset_name:str, dataset_subset:str=None):
             is_train_mode = True,
             dataset_image_key = "img",
             dataset_image_label_key = "coarse_label",
+        ),
+        EvalConfig("cifar20-household_electrical_devices",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_household_electrical_devices,
+        ),
+        EvalConfig("cifar20-household_furniture",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_household_furniture,
+        ),
+        EvalConfig("cifar20-insects",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_insects,
+        ),
+        EvalConfig("cifar20-large_carnivores",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_large_carnivores,
+        ),
+        EvalConfig("cifar20-large_manmade_outdoor_things",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_large_manmade_outdoor_things,
+        ),
+        EvalConfig("cifar20-large_natural_outdoor_scenes",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_large_natural_outdoor_scenes,
+        ),
+        EvalConfig("cifar20-large_omnivores_and_herbivores",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_large_omnivores_and_herbivores,
+        ),
+        EvalConfig("cifar20-medium_sized_mammals",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_medium_sized_mammals,
+        ),
+        EvalConfig("cifar20-non_insect_invertebrates",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_non_insect_invertebrates,
+        ),
+        EvalConfig("cifar20-people",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_people,
+        ),
+        EvalConfig("cifar20-reptiles",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_reptiles,
+        ),
+        EvalConfig("cifar20-small_mammals",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_small_mammals,
         ),
         EvalConfig("cifar20-veh1",
             dataset_repo = "cifar100",

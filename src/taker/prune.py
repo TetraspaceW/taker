@@ -61,10 +61,11 @@ def prune_and_evaluate(
     data = score_and_prune(opt, focus_out, cripple_out, c, c.save)
 
     # Evaluate the model
-    with torch.no_grad():
-        eval_out = evaluate_all(opt, c.eval_sample_size, c.datasets,
-                                dataset_tokens_to_skip=c.collection_sample_size)
-        data.update(eval_out)
+    if (c.evaluate_after_pruning):
+        with torch.no_grad():
+            eval_out = evaluate_all(opt, c.eval_sample_size, c.datasets,
+                                    dataset_tokens_to_skip=c.collection_sample_size)
+            data.update(eval_out)
 
     return data
 

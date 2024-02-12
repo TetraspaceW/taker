@@ -43,9 +43,9 @@ def get_shared_pruning_data(
         model_repo   = model_repo,
         # "metallama/llama-2-7b"
         token_limit  = 1000,  # trim the input to this max length
-        run_pre_test = True,  # evaluate the unpruned model
-        eval_sample_size = 1e3,
-        collection_sample_size = 1e3,
+        run_pre_test = False,  # evaluate the unpruned model
+        eval_sample_size = 1e4,
+        collection_sample_size = 1e4,
         # Removals parameters
         ff_frac   = 0.2,     # % of feed forward neurons to prune
         attn_frac = 0.00,     # % of attention neurons to prune
@@ -55,14 +55,15 @@ def get_shared_pruning_data(
         recalculate_activations = False, # iterative vs non-iterative
         n_steps = 1,
         save=True,
-        save_subdirectory = "/home/ubuntu/tetra/taker/examples/neuron-mapping"
+        save_subdirectory = "/home/ubuntu/tetra/taker/examples/neuron-mapping",
+        evaluate_after_pruning=False
     )
 
     # Parse CLI for arguments
     # c, args = cli_parser(c)
 
     #list of repos to cripple
-    ff_frac_to_prune = [0.01,0.02,0.05,0.1,0.2]
+    ff_frac_to_prune = [0.01, 0.02, 0.05, 0.1, 0.2]
     model_size = c.model_repo.split('-')[-1]
 
     # Run the iterated pruning for each cripple repo, for a range of ff_frac pruned
@@ -81,8 +82,8 @@ def get_shared_pruning_data(
 
 shared_pruning_data = get_shared_pruning_data(
     model_repo="Ahmed9275/Vit-Cifar100",
-    cripple_repos=["cifar20-trees", "cifar20-veh1", "cifar20-veh2"],
-    focus_repo="cifar20-trees")
+    cripple_repos=["cifar20-fish"],
+    focus_repo="cifar20-split")
 print(shared_pruning_data)
 
 # shared_pruning_data = get_shared_pruning_data("nickypro/tinyllama-15M")
