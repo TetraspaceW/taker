@@ -82,7 +82,7 @@ def get_shared_pruning_data(
 
 shared_pruning_data = get_shared_pruning_data(
     model_repo="Ahmed9275/Vit-Cifar100",
-    cripple_repos=["cifar20-fish"],
+    cripple_repos=["cifar20-veh1", "cifar20-veh2", "cifar20-trees"],
     focus_repo="cifar20-split")
 print(shared_pruning_data)
 
