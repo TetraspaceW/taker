@@ -74,7 +74,6 @@ comparison = compare_pruned_ff_criteria(
     path="examples/neuron-mapping/saved_tensors/",
     focus_repo="cifar20-split",
 )
-print(comparison)
 
 grid = [
     [
@@ -98,6 +97,9 @@ for i in range(len(datasets)):
             va="center",
             color="black" if grid[i, j] > average else "white",
         )
-plt.xticks(range(len(datasets)), datasets)
+plt.xticks(range(len(datasets)), datasets, rotation=90)
 plt.yticks(range(len(datasets)), datasets)
+
+plt.subplots_adjust(bottom=0.3)
+
 plt.show()
