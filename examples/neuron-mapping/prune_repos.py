@@ -1,6 +1,5 @@
 
 from taker.data_classes import PruningConfig
-from taker.parser import cli_parser
 from taker.prune import run_pruning
 import torch
 
@@ -63,7 +62,7 @@ def get_shared_pruning_data(
     # c, args = cli_parser(c)
 
     #list of repos to cripple
-    ff_frac_to_prune = [0.01, 0.02, 0.05, 0.1, 0.2]
+    ff_frac_to_prune = [0.01]
     model_size = c.model_repo.split('-')[-1]
 
     # Run the iterated pruning for each cripple repo, for a range of ff_frac pruned
@@ -80,9 +79,35 @@ def get_shared_pruning_data(
     
     return {}
 
+datasets = [
+    f"cifar20-{dataset}"
+    for dataset in [
+        "aquatic_mammals",
+        "fish",
+        "flowers",
+        "food_containers",
+        "fruit_and_vegetables",
+        "household_electrical_devices",
+        "household_furniture",
+        "insects",
+        "large_carnivores",
+        "large_natural_outdoor_scenes",
+        "large_omnivores_and_herbivores",
+        "medium_sized_mammals",
+        "non_insect_invertebrates",
+        "people",
+        "reptiles",
+        "small_mammals",
+        "trees",
+        "veh1",
+        "veh2",
+    ]
+]
+
+
 shared_pruning_data = get_shared_pruning_data(
-    model_repo="Ahmed9275/Vit-Cifar100",
-    cripple_repos=["cifar20-veh1", "cifar20-veh2", "cifar20-trees"],
+    model_repo="nickypro/vit-cifar100-random-init",
+    cripple_repos=datasets,
     focus_repo="cifar20-split")
 print(shared_pruning_data)
 
