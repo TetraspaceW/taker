@@ -102,12 +102,44 @@ class DatasetFilters:
         return rocketless_dataset
     
     @staticmethod
+    def filter_aquatic_mammals(_dataset):
+        aquatic_mammals_id = "0"
+        def filter_aquatic_mammals_example(example):
+            return str(example["coarse_label"]) == aquatic_mammals_id
+        aquatic_mammals_dataset = _dataset.filter(filter_aquatic_mammals_example)
+        return aquatic_mammals_dataset
+    
+    @staticmethod
     def filter_fish(_dataset):
         fish_id = "1"
         def filter_fish_example(example):
             return str(example["coarse_label"]) == fish_id
         fish_dataset = _dataset.filter(filter_fish_example)
         return fish_dataset
+    
+    @staticmethod
+    def filter_flowers(_dataset):
+        flowers_id = "2"
+        def filter_flowers_example(example):
+            return str(example["coarse_label"]) == flowers_id
+        flowers_dataset = _dataset.filter(filter_flowers_example)
+        return flowers_dataset
+    
+    @staticmethod
+    def filter_food_containers(_dataset):
+        food_containers_id = "3"
+        def filter_food_containers_example(example):
+            return str(example["coarse_label"]) == food_containers_id
+        food_containers_dataset = _dataset.filter(filter_food_containers_example)
+        return food_containers_dataset
+    
+    @staticmethod
+    def filter_fruit_and_vegetables(_dataset):
+        fruit_and_vegetables_id = "4"
+        def filter_fruit_and_vegetables_example(example):
+            return str(example["coarse_label"]) == fruit_and_vegetables_id
+        fruit_and_vegetables_dataset = _dataset.filter(filter_fruit_and_vegetables_example)
+        return fruit_and_vegetables_dataset
     
     @staticmethod
     def filter_household_electrical_devices(_dataset):
@@ -401,6 +433,15 @@ def infer_dataset_config(dataset_name:str, dataset_subset:str=None):
             dataset_image_key = "img",
             dataset_image_label_key = "coarse_label",
         ),
+        EvalConfig("cifar20-aquatic_mammals",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_aquatic_mammals,
+        ),
         EvalConfig("cifar20-fish",
             dataset_repo = "cifar100",
             dataset_type = "image-classification",
@@ -409,6 +450,33 @@ def infer_dataset_config(dataset_name:str, dataset_subset:str=None):
             dataset_image_key = "img",
             dataset_image_label_key = "coarse_label",
             dataset_filter=DatasetFilters.filter_fish,
+        ),
+        EvalConfig("cifar20-flowers",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_flowers,
+        ),
+        EvalConfig("cifar20-food_containers",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_food_containers,
+        ),
+        EvalConfig("cifar20-fruit_and_vegetables",
+            dataset_repo = "cifar100",
+            dataset_type = "image-classification",
+            dataset_split = ["train", "test"],
+            is_train_mode = True,
+            dataset_image_key = "img",
+            dataset_image_label_key = "coarse_label",
+            dataset_filter=DatasetFilters.filter_fruit_and_vegetables,
         ),
         EvalConfig("cifar20-household_electrical_devices",
             dataset_repo = "cifar100",
