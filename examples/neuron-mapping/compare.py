@@ -2,6 +2,8 @@ import torch
 import matplotlib.pyplot as plt
 import numpy as np
 
+from taker.activations import get_top_frac
+
 
 def compare_pruned_ff_criteria(
     cripple_repos: list[str],
@@ -12,7 +14,7 @@ def compare_pruned_ff_criteria(
 ):
     # cripple_repos = ["physics", "bio", "code"]
     directory = f"{path}{model_size}/"
-    suffix = f"-{model_size}-{prune_ratio}-recent.pt"
+    suffix = f"-{model_size}-0.01-recent.pt"
     ratios = {}
     ratios["model_size"] = model_size
 
@@ -24,7 +26,10 @@ def compare_pruned_ff_criteria(
             directory + repo1 + "-" + focus_repo + suffix,
             map_location=torch.device(device),
         )
-        repo1_ff_criteria = repo1_tensors["ff_criteria"]
+        # calculate ff_criteria for repo1 from the neuron scores
+        repo1_ff_scores = repo1_tensors["ff_scores"].float()
+        repo1_ff_criteria, _ = get_top_frac(repo1_ff_scores, prune_ratio)
+
         ratios[repo1] = {}
         for repo2 in cripple_repos:
             if repo1 == repo2:
@@ -34,7 +39,9 @@ def compare_pruned_ff_criteria(
                 directory + repo2 + "-" + focus_repo + suffix,
                 map_location=torch.device(device),
             )
-            repo2_ff_criteria = repo2_tensors["ff_criteria"]
+            # calculate ff_criteria for repo2 from the neuron scores
+            repo2_ff_scores = repo2_tensors["ff_scores"].float()
+            repo2_ff_criteria, _ = get_top_frac(repo2_ff_scores, prune_ratio)
 
             matches = torch.logical_and(repo1_ff_criteria, repo2_ff_criteria)
             ratio = torch.sum(matches) / torch.sum(repo1_ff_criteria)
@@ -72,7 +79,7 @@ prune_ratio = 0.01
 
 comparison = compare_pruned_ff_criteria(
     datasets,
-    "Cifar100",
+    "init",
     path="examples/neuron-mapping/saved_tensors/",
     focus_repo="cifar20-split",
     prune_ratio=prune_ratio,
@@ -88,6 +95,9 @@ grid = [
 grid = np.ma.masked_where(np.isnan(grid), grid)
 
 average = np.mean(grid)
+
+# reset all plot settings from configuration in taker proper
+plt.rcdefaults()
 
 plt.imshow(grid)
 for i in range(len(datasets)):
