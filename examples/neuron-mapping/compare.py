@@ -2,6 +2,8 @@ import torch
 import matplotlib.pyplot as plt
 import numpy as np
 
+from taker.activations import get_top_frac
+
 
 def compare_pruned_ff_criteria(
     cripple_repos: list[str],
@@ -12,7 +14,7 @@ def compare_pruned_ff_criteria(
 ):
     # cripple_repos = ["physics", "bio", "code"]
     directory = f"{path}{model_size}/"
-    suffix = f"-{model_size}-{prune_ratio}-recent.pt"
+    suffix = f"-{model_size}-0.01-recent.pt"
     ratios = {}
     ratios["model_size"] = model_size
 
@@ -24,7 +26,10 @@ def compare_pruned_ff_criteria(
             directory + repo1 + "-" + focus_repo + suffix,
             map_location=torch.device(device),
         )
-        repo1_ff_criteria = repo1_tensors["ff_criteria"]
+        # calculate ff_criteria for repo1 from the neuron scores
+        repo1_ff_scores = repo1_tensors["ff_scores"].float()
+        repo1_ff_criteria, _ = get_top_frac(repo1_ff_scores, prune_ratio)
+
         ratios[repo1] = {}
         for repo2 in cripple_repos:
             if repo1 == repo2:
@@ -34,13 +39,46 @@ def compare_pruned_ff_criteria(
                 directory + repo2 + "-" + focus_repo + suffix,
                 map_location=torch.device(device),
             )
-            repo2_ff_criteria = repo2_tensors["ff_criteria"]
+            # calculate ff_criteria for repo2 from the neuron scores
+            repo2_ff_scores = repo2_tensors["ff_scores"].float()
+            repo2_ff_criteria, _ = get_top_frac(repo2_ff_scores, prune_ratio)
 
             matches = torch.logical_and(repo1_ff_criteria, repo2_ff_criteria)
             ratio = torch.sum(matches) / torch.sum(repo1_ff_criteria)
             ratios[repo1][repo2] = ratio
 
     return ratios
+
+
+def get_grid(
+    cripple_repos: list[str],
+    model_size: str,
+    path: str = "/home/ubuntu/taker-rashid/examples/neuron-mapping/saved_tensors/",
+    focus_repo: str = "pile",
+    prune_ratio: float = 0.01,
+):
+    comparison = compare_pruned_ff_criteria(
+        cripple_repos,
+        model_size,
+        path=path,
+        focus_repo=focus_repo,
+        prune_ratio=prune_ratio,
+    )
+
+    grid = [
+        [
+            (
+                comparison[dataset_a][dataset_b].item()
+                if dataset_a != dataset_b
+                else np.nan
+            )
+            for dataset_b in datasets
+        ]
+        for dataset_a in datasets
+    ]
+    grid: np.ndarray = np.ma.masked_where(np.isnan(grid), grid)
+
+    return grid
 
 
 datasets = [
@@ -68,9 +106,9 @@ datasets = [
     ]
 ]
 
-prune_ratio = 0.01
+prune_ratio = 0.05
 
-comparison = compare_pruned_ff_criteria(
+grid = get_grid(
     datasets,
     "Cifar100",
     path="examples/neuron-mapping/saved_tensors/",
@@ -78,16 +116,47 @@ comparison = compare_pruned_ff_criteria(
     prune_ratio=prune_ratio,
 )
 
-grid = [
-    [
-        comparison[dataset_a][dataset_b].item() if dataset_a != dataset_b else np.nan
-        for dataset_b in datasets
-    ]
-    for dataset_a in datasets
-]
-grid = np.ma.masked_where(np.isnan(grid), grid)
+grid_random = get_grid(
+    datasets,
+    "init",
+    path="examples/neuron-mapping/saved_tensors/",
+    focus_repo="cifar20-split",
+    prune_ratio=prune_ratio,
+)
 
+# get median across non nan value
 average = np.mean(grid)
+
+# reset all plot settings from configuration in taker proper
+plt.rcdefaults()
+
+
+def plot_overlap_cdf(
+    grid1, grid2, grid1_label="Pretrained model", grid2_label="Random init"
+):
+    y_trained = np.searchsorted(np.sort(grid1.flatten()), grid1.flatten()) / len(
+        grid1.flatten()
+    )
+    y_trained.sort()
+    y_random = np.searchsorted(np.sort(grid2.flatten()), grid2.flatten()) / len(
+        grid2.flatten()
+    )
+    y_random.sort()
+    x_trained = grid1.flatten()
+    x_trained.sort()
+    x_random = grid2.flatten()
+    x_random.sort()
+    plt.plot(x_trained, y_trained, "-r", label=grid1_label)
+    plt.plot(x_random, y_random, "-b", label=grid2_label)
+    plt.xlabel("Overlap in neurons pruned")
+    plt.ylabel("Cumulative frequency of overlap")
+    plt.title("Distribution of overlap in neurons pruned, vision transformer\nprune_ratio = 0.05")
+    plt.legend()
+
+    plt.show()
+
+
+plot_overlap_cdf(grid, grid_random)
 
 plt.imshow(grid)
 for i in range(len(datasets)):
