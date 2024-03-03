@@ -138,9 +138,9 @@ def plot_overlap_cdf(
         grid1.flatten()
     )
     y_trained.sort()
-    y_random = np.searchsorted(
-        np.sort(grid2.flatten()), grid2.flatten()
-    ) / len(grid2.flatten())
+    y_random = np.searchsorted(np.sort(grid2.flatten()), grid2.flatten()) / len(
+        grid2.flatten()
+    )
     y_random.sort()
     x_trained = grid1.flatten()
     x_trained.sort()
@@ -150,7 +150,7 @@ def plot_overlap_cdf(
     plt.plot(x_random, y_random, "-b", label=grid2_label)
     plt.xlabel("Overlap in neurons pruned")
     plt.ylabel("Cumulative frequency of overlap")
-    plt.title("Distribution of overlap in neurons pruned, prune_ratio = 0.05")
+    plt.title("Distribution of overlap in neurons pruned, vision transformer\nprune_ratio = 0.05")
     plt.legend()
 
     plt.show()
