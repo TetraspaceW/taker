@@ -255,11 +255,119 @@ class DatasetFilters:
 
     @staticmethod
     def filter_veh2(_dataset):
-        veh2_id = "19"
-        def filter_veh2_example(example):
-            return str(example["coarse_label"]) == veh2_id
-        veh2_dataset = _dataset.filter(filter_veh2_example)
-        return veh2_dataset
+        rocket_ids = set([ "19" ])
+        def filter_rocket_example(example):
+            return str(example["coarse_label"]) in rocket_ids
+        rocket_dataset = _dataset.filter(filter_rocket_example)
+        return rocket_dataset
+    
+    @staticmethod
+    def filter_pile_FreeLaw(_dataset):
+        def filter_pile_FreeLaw_example(example):
+            return example["meta"]["pile_set_name"] == "FreeLaw"
+        pile_FreeLaw_dataset = _dataset.filter(filter_pile_FreeLaw_example)
+        return pile_FreeLaw_dataset
+    
+    @staticmethod
+    def filter_pile_PubMed_Abstracts(_dataset):
+        def filter_pile_PubMed_Abstracts_example(example):
+            return example["meta"]["pile_set_name"] == "PubMed Abstracts"
+        pile_PubMed_Abstracts_dataset = _dataset.filter(filter_pile_PubMed_Abstracts_example)
+        return pile_PubMed_Abstracts_dataset
+    
+    @staticmethod
+    def filter_pile_PubMed_Central(_dataset):
+        def filter_pile_PubMed_Central_example(example):
+            return example["meta"]["pile_set_name"] == "PubMed Central"
+        pile_PubMed_Central_dataset = _dataset.filter(filter_pile_PubMed_Central_example)
+        return pile_PubMed_Central_dataset
+    
+    @staticmethod
+    def filter_pile_NIH_ExPorter(_dataset):
+        def filter_pile_NIH_ExPorter_example(example):
+            return example["meta"]["pile_set_name"] == "NIH ExPorter"
+        pile_NIH_ExPorter_dataset = _dataset.filter(filter_pile_NIH_ExPorter_example)
+        return pile_NIH_ExPorter_dataset
+    
+    @staticmethod
+    def filter_pile_Enron_Emails(_dataset):
+        def filter_pile_Enron_Emails_example(example):
+            return example["meta"]["pile_set_name"] == "Enron Emails"
+        pile_Enron_Emails_dataset = _dataset.filter(filter_pile_Enron_Emails_example)
+        return pile_Enron_Emails_dataset
+        
+    @staticmethod
+    def filter_pile_Github(_dataset):
+        def filter_pile_Github_example(example):
+            return example["meta"]["pile_set_name"] == "Github"
+        pile_Github_dataset = _dataset.filter(filter_pile_Github_example)
+        return pile_Github_dataset
+        
+    @staticmethod
+    def filter_pile_StackExchange(_dataset):
+        def filter_pile_StackExchange_example(example):
+            return example["meta"]["pile_set_name"] == "StackExchange"
+        pile_StackExchange_dataset = _dataset.filter(filter_pile_StackExchange_example)
+        return pile_StackExchange_dataset
+    
+    @staticmethod
+    def filter_pile_HackerNews(_dataset):
+        def filter_pile_HackerNews_example(example):
+            return example["meta"]["pile_set_name"] == "HackerNews"
+        pile_HackerNews_dataset = _dataset.filter(filter_pile_HackerNews_example)
+        return pile_HackerNews_dataset
+        
+    @staticmethod
+    def filter_pile_ArXiv(_dataset):
+        def filter_pile_ArXiv_example(example):
+            return example["meta"]["pile_set_name"] == "ArXiv"
+        pile_ArXiv_dataset = _dataset.filter(filter_pile_ArXiv_example)
+        return pile_ArXiv_dataset
+        
+    @staticmethod
+    def filter_pile_Wikipedia(_dataset):
+        def filter_pile_Wikipedia_example(example):
+            return example["meta"]["pile_set_name"] == "Wikipedia (en)"
+        pile_Wikipedia_dataset = _dataset.filter(filter_pile_Wikipedia_example)
+        return pile_Wikipedia_dataset
+    
+    @staticmethod
+    def filter_pile_Ubuntu_IRC(_dataset):
+        def filter_pile_Ubuntu_IRC_example(example):
+            return example["meta"]["pile_set_name"] == "Ubuntu IRC"
+        pile_Ubuntu_IRC_dataset = _dataset.filter(filter_pile_Ubuntu_IRC_example)
+        return pile_Ubuntu_IRC_dataset
+    
+    @staticmethod
+    def filter_pile_USPTO_Backgrounds(_dataset):
+        def filter_pile_USPTO_Backgrounds_example(example):
+            return example["meta"]["pile_set_name"] == "USPTO Backgrounds"
+        pile_USPTO_Backgrounds_dataset = _dataset.filter(filter_pile_USPTO_Backgrounds_example)
+        return pile_USPTO_Backgrounds_dataset
+    
+    @staticmethod
+    def filter_pile_PhilPapers(_dataset):
+        def filter_pile_PhilPapers_example(example):
+            return example["meta"]["pile_set_name"] == "PhilPapers"
+        pile_PhilPapers_dataset = _dataset.filter(filter_pile_PhilPapers_example)
+        return pile_PhilPapers_dataset
+    
+    @staticmethod
+    def filter_pile_EuroParl(_dataset):
+        def filter_pile_EuroParl_example(example):
+            return example["meta"]["pile_set_name"] == "EuroParl"
+        pile_EuroParl_dataset = _dataset.filter(filter_pile_EuroParl_example)
+        return pile_EuroParl_dataset
+    
+    @staticmethod
+    def filter_pile_Gutenberg(_dataset):
+        def filter_pile_Gutenberg_example(example):
+            return example["meta"]["pile_set_name"] == "Gutenberg (PG-19)"
+        pile_Gutenberg_dataset = _dataset.filter(filter_pile_Gutenberg_example)
+        return pile_Gutenberg_dataset
+    
+        
+    
 
 def infer_dataset_config(dataset_name:str, dataset_subset:str=None):
     eval_configs = [
@@ -624,7 +732,107 @@ def infer_dataset_config(dataset_name:str, dataset_subset:str=None):
             dataset_text_key = "text",
             dataset_text_label_key = "label",
             dataset_has_test_split = True,
-        )
+        ),
+        EvalConfig("biology",
+            dataset_repo           = "camel-ai/biology",
+            dataset_text_key       = "message_2",
+            dataset_has_test_split = False,
+        ),
+        EvalConfig("physics",
+            dataset_repo = "camel-ai/physics",
+            dataset_text_key = "message_2",
+            dataset_has_test_split = False,
+        ),
+        EvalConfig("chemistry",
+            dataset_repo = "camel-ai/chemistry",
+            dataset_text_key = "message_2",
+            dataset_has_test_split = False,
+        ),
+        EvalConfig("math",
+            dataset_repo = "camel-ai/math",
+            dataset_text_key = "message_2",
+            dataset_has_test_split = False,
+        ),
+        EvalConfig("poems",
+            dataset_repo = "sadFaceEmoji/english-poems",
+            dataset_text_key = "poem",
+            dataset_has_test_split = False,
+        ),
+        EvalConfig("pile_FreeLaw",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_FreeLaw,
+        ),
+        EvalConfig("pile_PubMed_Abstracts",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_PubMed_Abstracts,
+        ),
+        EvalConfig("pile_PubMed_Central",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_PubMed_Central,
+        ),
+        EvalConfig("pile_NIH_ExPorter",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_NIH_ExPorter,
+        ),
+        EvalConfig("pile_Enron_Emails",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_Enron_Emails,
+        ),
+        EvalConfig("pile_Github",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_Github,
+        ),
+        EvalConfig("pile_StackExchange",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_StackExchange,
+        ),
+        EvalConfig("pile_HackerNews",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_HackerNews,
+        ),
+        EvalConfig("pile_ArXiv",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_ArXiv,
+        ),
+        EvalConfig("pile_Wikipedia",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_Wikipedia,
+        ),
+        EvalConfig("pile_Ubuntu_IRC",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_Ubuntu_IRC,
+        ),
+        EvalConfig("pile_USPTO_Backgrounds",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_USPTO_Backgrounds,
+        ),
+        EvalConfig("pile_PhilPapers",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_PhilPapers,
+        ),
+        EvalConfig("pile_EuroParl",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_EuroParl,
+        ),
+        EvalConfig("pile_Gutenberg",
+            dataset_repo = "monology/pile-uncopyrighted",
+            dataset_text_key = "text",
+            dataset_filter = DatasetFilters.filter_pile_Gutenberg,
+        ),
     ]
 
     # Convert into searchable dict

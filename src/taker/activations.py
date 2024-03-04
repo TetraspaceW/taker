@@ -623,9 +623,17 @@ def save_timestamped_tensor_dict( opt: Model,
         path: str = None,
         file: str = None ):
     now = datetime.datetime.now().strftime( "%Y-%m-%d_%H:%M:%S" )
-    path = path or f'tmp/{opt.model_size}'
-    # os.makedirs( path, exist_ok=True )
-    filename = f'{path}/{file}' or f'{path}/{opt.model_size}-{name}-{now}.pt'
+    os.makedirs( f'saved_tensors/{opt.model_size}', exist_ok=True )
+    filename = f'saved_tensors/{opt.model_size}/{name}-{opt.model_size}-{now}.pt'
+    torch.save( data, filename )
+    print( f'Saved {filename} to {opt.model_size}' )
+    return filename
+
+def save_tensor_dict( opt: Model,
+        data: Dict[str, Tensor],
+        name: str ):
+    os.makedirs( f'saved_tensors/{opt.model_size}', exist_ok=True )
+    filename = f'saved_tensors/{opt.model_size}/{name}-{opt.model_size}-recent.pt'
     torch.save( data, filename )
     print( f'Saved {filename} to {opt.model_size}' )
     return filename

@@ -4,8 +4,6 @@ from taker.prune import run_pruning
 import torch
 
 def compare_pruned_ff_criteria(cripple_repos: list[str], model_size: str):
-    # cripple_repos = ["physics", "bio", "code"]
-    print("model_size: ",model_size)
     directory = "/home/ubuntu/taker-rashid/examples/neuron-mapping/saved_tensors/"+model_size+"/"
     focus_repo = "pile"
     suffix = "-"+model_size+"-recent.pt"
