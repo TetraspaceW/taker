@@ -1,0 +1,40 @@
+cifar20_datasets = [
+    f"cifar20-{dataset}"
+    for dataset in [
+        "aquatic_mammals",
+        "fish",
+        "flowers",
+        "food_containers",
+        "fruit_and_vegetables",
+        "household_electrical_devices",
+        "household_furniture",
+        "insects",
+        "large_carnivores",
+        "large_natural_outdoor_scenes",
+        "large_omnivores_and_herbivores",
+        "medium_sized_mammals",
+        "non_insect_invertebrates",
+        "people",
+        "reptiles",
+        "small_mammals",
+        "trees",
+        "veh1",
+        "veh2",
+    ]
+]
+
+pile_datasets = ["pile_ArXiv", 
+                "pile_Enron_Emails", 
+                "pile_EuroParl", 
+                "pile_FreeLaw",
+                "pile_Github",
+                "pile_Gutenberg",
+                "pile_HackerNews",
+                "pile_NIH_ExPorter",
+                "pile_PhilPapers",
+                "pile_PubMed_Abstracts",
+                "pile_PubMed_Central",
+                "pile_StackExchange",
+                "pile_Ubuntu_IRC",
+                "pile_USPTO_Backgrounds",
+                "pile_Wikipedia"]
