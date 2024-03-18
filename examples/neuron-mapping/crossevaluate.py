@@ -15,8 +15,8 @@ c = PruningConfig(
     model_repo="Ahmed9275/Vit-Cifar100",
     token_limit=1000,  # trim the input to this max length
     run_pre_test=False,  # evaluate the unpruned model
-    eval_sample_size=1e4,
-    collection_sample_size=1e4,
+    eval_sample_size=1e3,
+    collection_sample_size=1e3,
     # Removals parameters
     ff_frac=0.01,  # % of feed forward neurons to prune
     attn_frac=0.00,  # % of attention neurons to prune
@@ -24,7 +24,7 @@ c = PruningConfig(
     cripple="physics",  # the “unlearned” dataset
     additional_datasets=tuple(),  # any extra datasets to evaluate on
     recalculate_activations=False,  # iterative vs non-iterative
-    dtype="int8",
+    dtype="fp32",
     n_steps=1,
 )
 
@@ -56,21 +56,21 @@ def save_data_dict(model_size: str, data: any, name: str):
 
 
 def get_ff_criteria_for_ff_frac(repo, ff_frac, model_size="hf"):
-    # ff_start_time = datetime.now()
+    ff_start_time = datetime.now()
     ff_scores, _ = load_tensors_for_repo(repo, model_size)
-    # ff_mid_time = datetime.now()
+    ff_mid_time = datetime.now()
     criteria, _ = get_top_frac(ff_scores, ff_frac)
-    # ff_end_time = datetime.now()
+    ff_end_time = datetime.now()
 
-    # print("Time taken to load tensors for ff_scores: ", ff_mid_time - ff_start_time)
-    # print("Time taken to get ff_criteria from ff_scores: ", ff_end_time - ff_mid_time)
-    # print("Time taken to get ff_criteria from ff_frac: ", ff_end_time - ff_start_time)
+    print("Time taken to load tensors for ff_scores: ", ff_mid_time - ff_start_time)
+    print("Time taken to get ff_criteria from ff_scores: ", ff_end_time - ff_mid_time)
+    print("Time taken to get ff_criteria from ff_frac: ", ff_end_time - ff_start_time)
     return criteria
 
 
 # pruning dataset is the dataset to use to determine which neurons to prune, target dataset is the dataset to find the accuracy of
 def find_accuracy(pruning_dataset, target_dataset, ff_frac):
-    # find_acc_start = datetime.now()
+    find_acc_start = datetime.now()
     opt = Model(
         c.model_size,
         limit=c.token_limit,
@@ -88,18 +88,18 @@ def find_accuracy(pruning_dataset, target_dataset, ff_frac):
     eval_config: EvalConfig = infer_dataset_config(target_dataset)
     eval_config.num_tokens_to_skip = c.collection_sample_size
     eval_config.sample_size = c.eval_sample_size
-    # print(f"checking accuracy for ff_frac: {ff_frac} for pruning dataset: {pruning_dataset} and target_dataset: {target_dataset}")
+    print(f"checking accuracy for ff_frac: {ff_frac} for pruning dataset: {pruning_dataset} and target_dataset: {target_dataset}")
     if ff_frac == 0:
         unpruned_accuracy = run_evaluation(opt, eval_config)
-        # find_acc_mid = datetime.now()
-        # print(f"unpruned accuracy is: {unpruned_accuracy.percent}")
-        # print(f"time to find unpruned accuracy for dataset: {target_dataset} is: {find_acc_mid - find_acc_start}")
+        find_acc_mid = datetime.now()
+        print(f"unpruned accuracy is: {unpruned_accuracy.percent}")
+        print(f"time to find unpruned accuracy for dataset: {target_dataset} is: {find_acc_mid - find_acc_start}")
         return unpruned_accuracy.percent["base"]
     ff_criteria = get_ff_criteria_for_ff_frac(pruning_dataset, ff_frac, model_size)
     opt.delete_ff_keys(ff_criteria)
     eval_data = run_evaluation(opt, eval_config)
-    # find_acc_end = datetime.now()
-    # print(f"time to find accuracy for pruning dataset: {pruning_dataset} and target_dataset: {target_dataset} with ff_frac: {ff_frac} is: {find_acc_end - find_acc_start} and has accuracy: {eval_data.percent}")
+    find_acc_end = datetime.now()
+    print(f"time to find accuracy for pruning dataset: {pruning_dataset} and target_dataset: {target_dataset} with ff_frac: {ff_frac} is: {find_acc_end - find_acc_start} and has accuracy: {eval_data.percent}")
     return eval_data.percent["base"]
 
 
@@ -118,7 +118,7 @@ def find_correct_ff_frac(
         f"trying to find correct ff_frac for {dataset} with target accuracy {target_accuracy}"
     )
     # check if upper and lower are reasonable, if not default to 1 and 0.
-    # ff_start = datetime.now()
+    ff_start = datetime.now()
     if upper < 1:
         acc_upper = find_accuracy(dataset, dataset, upper)
         if acc_upper > target_accuracy:
@@ -128,14 +128,16 @@ def find_correct_ff_frac(
         if acc_lower < target_accuracy:
             lower = 0
     # binary search for ff_frac that reaches accuracy below target accuracy
+    
     while upper >= lower + ff_frac_precision:
+        print(f"finding accuracy for: {dataset} with ff_frac: {(lower + upper) / 2}")
         acc_mid = find_accuracy(dataset, dataset, (lower + upper) / 2)
         if (
             acc_mid >= target_accuracy - accuracy_precision
             and acc_mid <= target_accuracy
         ):
-            # ff_end = datetime.now()
-            # print(f"time to find correct ff_frac for target accuracy is: {ff_end - ff_start}")
+            ff_end = datetime.now()
+            print(f"time to find correct ff_frac for target accuracy is: {ff_end - ff_start}")
             return (lower + upper) / 2
         elif acc_mid < target_accuracy:
             upper = (lower + upper) / 2
@@ -165,7 +167,7 @@ def compareEvaluations(datasets):
 
         for dataset2 in datasets:
             final_data[dataset1][dataset2] = {}
-            # print("finding accuracy for: ", dataset2, "with neurons pruned based on: ", dataset1)
+            print("finding accuracy for: ", dataset2, "with neurons pruned based on: ", dataset1)
             unpruned_accuracy = find_accuracy(dataset1, dataset2, 0)
             pruned_accuracy = find_accuracy(dataset1, dataset2, ff_frac)
             final_data[dataset1][dataset2]["unpruned_accuracy"] = unpruned_accuracy
