@@ -174,7 +174,13 @@ def prune_random( opt: Model,
         opt (Model): model to prune and evaluate
         ff_frac (float): fraction of FF to prune
         attn_frac (float): fraction of Attention to prune
+        ff_pruned: list of which mlp neurons have already been pruned
+        attn_pruned: list of which attn neurons have already been pruned
 
+    Returns:
+        ff_pruned: updated list of which mlp neurons have already been pruned
+        attn_pruned: updated list of which attn neurons have already been pruned
+        data_out: summary info on which neurons have been pruned
     """
     if ff_pruned is None:
         ff_pruned = np.zeros( (opt.cfg.n_layers, opt.cfg.d_mlp), dtype=np.bool_ )

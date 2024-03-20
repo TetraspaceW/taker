@@ -161,7 +161,7 @@ def compareEvaluations(datasets):
         final_data[dataset1]["target_accuracy"] = target_accuracy
 
         ff_frac = find_correct_ff_frac(
-            dataset1, target_accuracy=target_accuracy, accuracy_precision=2, upper=0.128
+            dataset1, target_accuracy=target_accuracy, accuracy_precision=2, upper=0.05
         )
         final_data[dataset1]["ff_frac"] = ff_frac
 

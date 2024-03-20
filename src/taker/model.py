@@ -9,6 +9,7 @@ import time
 from torch import Tensor
 from accelerate import Accelerator
 from datasets import Dataset
+from collections import defaultdict
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -23,7 +24,7 @@ import matplotlib as mpl
 # Import from inside module
 from .model_repos import supported_model_repos
 from .nn import InverseLinear, \
-    NeuronMask, NeuronPostBias, NeuronFunctionList, \
+    NeuronMask, NeuronPostBias, NeuronFunctionList, NeuronActAdd, \
     mlp_delete_rows_raw, mlp_svd_two_layer_raw, mlp_delete_columns_raw
 from .model_maps import convert_hf_model_config, ModelMap, ConfigClass
 from .data_classes import DtypeMap, EvalOutput
@@ -91,9 +92,10 @@ class Model():
 
         # Handle dtype
         if dtype is None and torch_dtype is None:
-            dtype = "fp16"
-        if self.device == "cpu":
-            dtype = "fp32"
+            if self.device == "cpu":
+                dtype = "fp32"
+            else:
+                dtype = "fp16"
         self.dtype_map = DtypeMap(dtype, torch_dtype)
         self.dtype = self.dtype_map._dtype
         self.dtype_args = self.dtype_map._dtype_args
@@ -105,9 +107,11 @@ class Model():
         self.tokenizer_repo: str = None
         self.set_repo(model_repo, tokenizer_repo)
 
-        # Add masking parameters
+        # Add hook parameters
         self.mask_fn: str = mask_fn
         self.masking_enabled: bool = True
+        self.actadd_enabled: bool = True
+        self.post_biases_enabled: bool = False
 
         # Initialize model components
         self.cfg: ConfigClass = None
@@ -117,10 +121,13 @@ class Model():
         self.map: ModelMap = None
         self.model = None
         self.layers: list = None
+
+        # Hooking into the model
+        self.hook_handles = defaultdict(lambda : defaultdict(dict))
         self.activations: dict = None
         self.masks: dict = None
+        self.actadds: dict = None
         self.post_biases: dict = None
-        self.post_biases_enabled: bool = False
         self.attn_pre_out_mode: str = None
         self.mlp_pre_out_mode: str = None
         self.init_model()
@@ -180,10 +187,12 @@ class Model():
             "mlp_pre_out": {}
         }
         self.masks = {}
+        self.actadds = {}
         self.post_biases = {}
 
         self.register_activations()
         self.register_masks()
+        self.register_actadds()
         self.register_post_biases()
         if self.dtype_map.is_low_precision:
             return self
@@ -246,6 +255,26 @@ class Model():
             tensor_list = [ t.to(self.output_device) for t in tensor_list ]
         return torch.stack( tensor_list )
 
+    def save_hook_handle(self,
+            new_hook_handle, # The output handle of register_forward_hook()
+            hook_type: str, # What type of hook? activations, mask, input, ...
+            hook_component: str, # What to hook? pre_out, mlp_in, ...
+            hook_layer: Optional[int] = None, # If has layers, what layer?
+            replace_old_hook: bool = True, # If there is an existing hook, replace it?
+            ):
+        handles = self.hook_handles
+        if hook_layer is not None:
+            handles = handles[hook_layer]
+        handles = handles[hook_component]
+
+        # replace old hook
+        if hook_type in handles:
+            print(f"Hook already exists: {hook_layer} {hook_component} {hook_type}")
+            if replace_old_hook:
+                handles[hook_type].remove()
+        # Save new hook
+        handles[hook_type] = new_hook_handle
+
     def build_output_hook(self, component: str, name: str):
         # Define hook function which adds output to self.activations
         def hook(_model, _input, output):
@@ -277,13 +306,16 @@ class Model():
             if self.mlp_pre_out_mode == "hook":
                 fc2 = layer["mlp.out_proj"]
                 name = pad_zeros( layer_index ) + "-mlp-pre-out"
-                fc2.register_forward_pre_hook(self.build_input_hook("mlp_pre_out", name))
+                _handle = fc2.register_forward_pre_hook(self.build_input_hook("mlp_pre_out", name))
+                self.save_hook_handle(_handle, "input-read", "mlp.out_proj", layer_index)
+
 
             # Optionally, build pre_out hook if possible
             if self.attn_pre_out_mode == "hook":
                 attn_o = layer["attn.out_proj"]
                 name = pad_zeros( layer_index ) + "-attention-out"
-                attn_o.register_forward_pre_hook(self.build_input_hook("attn_pre_out", name))
+                _handle = attn_o.register_forward_pre_hook(self.build_input_hook("attn_pre_out", name))
+                self.save_hook_handle(_handle, "input-read", "attn.out_proj", layer_index)
 
         print( f" - Registered {layer_index+1} Attention Layers" )
 
@@ -312,24 +344,90 @@ class Model():
                 return (_input[0],)
             return (mask(_input[0]),)
 
-        module.register_forward_pre_hook(pre_hook_masking)
+        _handle = module.register_forward_pre_hook(pre_hook_masking)
+        return _handle
 
     def register_masks(self):
         """Register the masks for each layer in the model."""
         if self.mask_fn == "delete":
             return
 
+        if len(list(self.masks.keys())) > 0:
+            print("WARNING: replacing existing masks dict")
+            self.masks = {}
+
         for layer_index, layer in enumerate(self.layers):
             # Listen to inputs for FF_out
             fc2 = layer["mlp.out_proj"]
-            self.register_input_mask(fc2, "mlp_pre_out", layer_index)
+            _handle = self.register_input_mask(fc2, "mlp_pre_out", layer_index)
+            self.save_hook_handle(_handle, "input-mask", "mlp.out_proj", layer_index)
 
             # Optionally, build pre_out hook if possible
             attn_o = layer["attn.out_proj"]
-            self.register_input_mask(attn_o, "attn_pre_out", layer_index)
+            _handle = self.register_input_mask(attn_o, "attn_pre_out", layer_index)
+            self.save_hook_handle(_handle, "input-mask", "attn.out_proj", layer_index)
 
         self.masks["mlp_pre_out"]  = NeuronFunctionList(self.masks["mlp_pre_out"])
         self.masks["attn_pre_out"] = NeuronFunctionList(self.masks["attn_pre_out"])
+
+    def register_input_actadd(self,
+            module: torch.nn.Module,
+            component: str,
+            layer_index: int
+            ):
+        if component not in self.actadds:
+            self.actadds[component] = [None for _ in range(self.cfg.n_layers)]
+        if self.actadds[component][layer_index] is not None:
+            print(f"WARNING: {component} {layer_index} already has ActAdd!")
+
+
+        shape = (self.cfg.d_model,)
+        if component == "mlp_pre_out":
+            shape = (self.cfg.d_mlp,)
+
+        actadd = NeuronActAdd(self.device, self.dtype)
+        self.actadds[component][layer_index] = actadd
+
+        # Register the pre-hook for masking
+        def pre_hook_masking(_module, _input):
+            if not self.actadd_enabled:
+                return (_input[0],)
+            return (actadd(_input[0]),)
+
+        _handle = module.register_forward_pre_hook(pre_hook_masking)
+        return _handle
+
+    def register_actadds(self):
+        """Register the masks for each layer in the model."""
+        if len(list(self.actadds.keys())) > 0:
+            print("WARNING: replacing existing actadds dict")
+            self.actadds = {}
+
+        for layer_index, layer in enumerate(self.layers):
+            # Listen to inputs for FF_out
+            fc2 = layer["mlp.out_proj"]
+            _handle = self.register_input_actadd(fc2, "mlp_pre_out", layer_index)
+            self.save_hook_handle(_handle, "input-actadd", "mlp.out_proj", layer_index)
+
+            # Optionally, build pre_out hook if possible
+            attn_o = layer["attn.out_proj"]
+            _handle = self.register_input_actadd(attn_o, "attn_pre_out", layer_index)
+            self.save_hook_handle(_handle, "input-actadd", "attn.out_proj", layer_index)
+
+        self.actadds["mlp_pre_out"]  = NeuronFunctionList(self.actadds["mlp_pre_out"])
+        self.actadds["attn_pre_out"] = NeuronFunctionList(self.actadds["attn_pre_out"])
+
+    def update_actadd(self,
+            params: Tensor, # [n_layers, n_tokens, d_component]
+            component: str,
+            ):
+        """ Update the activation addition neuron functions for component """
+        assert component in self.actadds
+
+        params = params.to(self.device, self.dtype)
+        for layer_index, param in enumerate(params):
+            actadd: NeuronActAdd = self.actadds[component][layer_index]
+            actadd.set_actadd(param)
 
     def register_output_bias(self,
             module: torch.nn.Module,
@@ -358,7 +456,8 @@ class Model():
                 return _output
             return post_bias(_output)
 
-        module.register_forward_hook(post_hook_bias)
+        _handle = module.register_forward_hook(post_hook_bias)
+        return _handle
 
     def register_post_biases(self):
         self.post_biases_enabled = True
@@ -367,13 +466,18 @@ class Model():
             "attn.v_proj" in self.layers[0] and \
             self.layers[0]["attn.v_proj"] is not None
 
+        if len(list(self.post_biases)) >= 1:
+            print("WARNING: Replacing existing post_biases dict")
+            self.post_biases = {}
+
         if do_attn_vo_biases:
             for layer_index, layer in enumerate(self.layers):
                 # TODO: fix when cfg.n_key_value_heads != cfg.n_heads
                 # attn_v = layer["attn.v_proj"]
                 # self.register_output_bias(attn_v, "attn_v", layer_index)
                 attn_o = layer["attn.out_proj"]
-                self.register_output_bias(attn_o, "attn_o", layer_index)
+                _handle = self.register_output_bias(attn_o, "attn_o", layer_index)
+                self.save_hook_handle(_handle, "output-bias", "attn.out_proj", layer_index)
 
             # self.post_biases["attn_v"] = NeuronFunctionList(self.post_biases["attn_v"])
             self.post_biases["attn_o"] = NeuronFunctionList(self.post_biases["attn_o"])
@@ -381,7 +485,8 @@ class Model():
         if "mlp.out_proj" in self.layers[0]:
             for layer_index, layer in enumerate(self.layers):
                 mlp_out = layer["mlp.out_proj"]
-                self.register_output_bias(mlp_out, "mlp_out", layer_index)
+                _handle = self.register_output_bias(mlp_out, "mlp_out", layer_index)
+                self.save_hook_handle(_handle, "output-bias", "mlp.out_proj", layer_index)
 
             self.post_biases["mlp_out"] = NeuronFunctionList(self.post_biases["mlp_out"])
 
@@ -517,6 +622,20 @@ class Model():
             )
         return torch.stack(masked_activations)
 
+    def run_inverse_masking(self, activations:Tensor, component: str):
+        """ Returns activations that were masked, and not the ones that weren't"""
+        masked_activations = []
+        for layer_index in range(self.cfg.n_layers):
+            mask: NeuronMask = self.masks[component][layer_index]
+            act  = activations[layer_index]
+            orig_shape = act.shape
+            temp_shape = (-1, *mask.shape)
+            masked_activations.append(
+                mask.inverse_mask(act.view(temp_shape)).view(orig_shape)
+            )
+        return torch.stack(masked_activations)
+
+
     def get_text_activations( self,
                 text: Optional[str] = None,
                 input_ids: Optional[Tensor] = None,
@@ -608,26 +727,25 @@ class Model():
                 ff_out: The intermedate ff output activations.
                 output: The final output tensor.
         """
-        
+
         outputs = self.model( pixel_values=pixel_values, output_hidden_states=True )
-        
+
         hidden_states = self.out_stack( outputs.hidden_states ).squeeze().detach()
         inpt = hidden_states[0].detach()
-        
+
         attention_out = self.out_stack([
             a[1] for a in self.get_recent_activations("attn")
         ])
         attention_out = attention_out.squeeze().detach()
-        
         ff_out =  []
         for i in range(self.cfg.n_layers):
             ff_out.append( hidden_states[i+1] - attention_out[i] - hidden_states[i] )
         ff_out = self.out_stack( ff_out ).squeeze().detach().detach()
-        
+
         output: Tensor = outputs.last_hidden_state[0].detach()
-        
+
         return inpt, attention_out, ff_out, output
-        
+
     def get_residual_stream( self,
                 text: Optional[str] = None,
                 input_ids: Optional[Tensor] = None,
