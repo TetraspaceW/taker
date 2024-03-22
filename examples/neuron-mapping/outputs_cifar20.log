@@ -1,0 +1,382 @@
+{"cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "target_accuracy": 79.84015984015986, "ff_frac": 0.008984375000000001, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 78.12187812187813, "accuracy_difference": 21.67832167832168, "accuracy_ratio": 0.7827827827827828
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.2007992007992, "accuracy_difference": 0.09990009990011117, "accuracy_ratio": 0.9989939637826961
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999000999000999
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 95.1048951048951, "accuracy_difference": 4.895104895104893, "accuracy_ratio": 0.951048951048951
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "target_accuracy": 79.44055944055945, "ff_frac": 0.0140625, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 96.5034965034965, "accuracy_difference": 3.296703296703299, "accuracy_ratio": 0.9669669669669669
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 78.62137862137862, "accuracy_difference": 20.679320679320682, "accuracy_ratio": 0.7917505030181087
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.19980019980019392, "accuracy_ratio": 0.9980019980019981
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.6013986013986, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.9989878542510122
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "target_accuracy": 79.68031968031968, "ff_frac": 0.043750000000000004, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 1.0989010989011092, "accuracy_ratio": 0.9889889889889889
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.6003996003996, "accuracy_difference": -0.2997002997002909, "accuracy_ratio": 1.0030181086519114
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 78.02197802197803, "accuracy_difference": 21.57842157842157, "accuracy_ratio": 0.7833500501504514
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 98.9010989010989, "accuracy_difference": 0.999000999000998, "accuracy_ratio": 0.99
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 98.3016983016983, "accuracy_difference": 1.6983016983017052, "accuracy_ratio": 0.9830169830169829
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 98.3016983016983, "accuracy_difference": 1.3986013986014, "accuracy_ratio": 0.9859719438877755
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.3006993006993, "accuracy_difference": -0.19980019980020813, "accuracy_ratio": 1.0020161290322582
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.2007992007992, "accuracy_difference": 0.499500499500499, "accuracy_ratio": 0.9949899799599199
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.599400599400596, "accuracy_ratio": 0.994005994005994
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.5004995004995, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.0010050251256282
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "target_accuracy": 79.92007992007993, "ff_frac": 0.03125, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.6003996003996, "accuracy_difference": -0.2997002997002909, "accuracy_ratio": 1.0030181086519114
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.2007992007992, "accuracy_difference": 0.39960039960040206, "accuracy_ratio": 0.995987963891675
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 78.12187812187813, "accuracy_difference": 21.778221778221777, "accuracy_ratio": 0.782
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.19980019980019392, "accuracy_ratio": 0.9980019980019981
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 100.0, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.001
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.599400599400596, "accuracy_ratio": 0.994005994005994
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "target_accuracy": 79.92007992007993, "ff_frac": 0.0171875, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 97.002997002997, "accuracy_difference": 2.297702297702301, "accuracy_ratio": 0.9768611670020121
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 78.72127872127872, "accuracy_difference": 21.17882117882118, "accuracy_ratio": 0.788
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.2007992007992, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.001008064516129
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.39960039960040206, "accuracy_ratio": 0.996003996003996
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "target_accuracy": 80.0, "ff_frac": 0.0703125, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.8001998001998, "accuracy_difference": -0.499500499500499, "accuracy_ratio": 1.0050301810865192
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.499500499500499, "accuracy_ratio": 0.9949849548645938
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 98.9010989010989, "accuracy_difference": 0.999000999000998, "accuracy_ratio": 0.99
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.19980019980020813, "accuracy_ratio": 0.9979999999999999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 78.42157842157842, "accuracy_difference": 21.578421578421583, "accuracy_ratio": 0.7842157842157842
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.3006993006993, "accuracy_difference": 0.599400599400596, "accuracy_ratio": 0.994
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999000999000999
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.8001998001998, "accuracy_difference": -0.09990009990011117, "accuracy_ratio": 1.001002004008016
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.2007992007992, "accuracy_difference": 0.5994005994006102, "accuracy_ratio": 0.9939939939939939
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999000999000999
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.998997995991984
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.599400599400596, "accuracy_ratio": 0.9939879759519038
+        }
+    },"cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "target_accuracy": 79.92007992007993, "ff_frac": 0.025, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.9000999000999, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.0010010010010009
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.3006993006993, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 78.22177822177822, "accuracy_difference": 21.67832167832168, "accuracy_ratio": 0.783
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.2007992007992, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.001008064516129
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999000999000999
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.5004995004995, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.0010050251256282
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.6013986013986, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.9989878542510122
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-insects": {"unpruned_accuracy": 100.0, "target_accuracy": 80.0, "ff_frac": 0.01171875, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.3006993006993, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.2007992007992, "accuracy_difference": 0.39960039960040206, "accuracy_ratio": 0.995987963891675
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 78.22177822177822, "accuracy_difference": 21.778221778221777, "accuracy_ratio": 0.7822177822177823
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 94.8051948051948, "accuracy_difference": 5.194805194805198, "accuracy_ratio": 0.948051948051948
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.80119880119881, "accuracy_difference": -0.09990009990011117, "accuracy_ratio": 1.001012145748988
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "target_accuracy": 79.76023976023976, "ff_frac": 0.018750000000000003, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 97.6023976023976, "accuracy_difference": 2.197802197802204, "accuracy_ratio": 0.9779779779779779
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.6003996003996, "accuracy_difference": -0.2997002997002909, "accuracy_ratio": 1.0030181086519114
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 77.82217782217782, "accuracy_difference": 21.878121878121874, "accuracy_ratio": 0.780561122244489
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 95.50449550449551, "accuracy_difference": 4.195804195804186, "accuracy_ratio": 0.9579158316633267
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 97.40259740259741, "accuracy_difference": 2.397602397602398, "accuracy_ratio": 0.975975975975976
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.19980019980019392, "accuracy_ratio": 0.9980019980019981
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.4005994005994, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.19980019980019392, "accuracy_ratio": 0.9980019980019981
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }
+    },"cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "target_accuracy": 80.0, "ff_frac": 0.36092090606689453, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 63.836163836163834, "accuracy_difference": 35.96403596403597, "accuracy_ratio": 0.6396396396396395
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 75.02497502497502, "accuracy_difference": 24.275724275724286, "accuracy_ratio": 0.7555331991951709
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 86.81318681318682, "accuracy_difference": 12.78721278721278, "accuracy_ratio": 0.8716148445336008
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 92.007992007992, "accuracy_difference": 7.8921078921079015, "accuracy_ratio": 0.9209999999999999
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 94.7052947052947, "accuracy_difference": 5.194805194805198, "accuracy_ratio": 0.948
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 93.00699300699301, "accuracy_difference": 6.993006993006986, "accuracy_ratio": 0.9300699300699301
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 96.5034965034965, "accuracy_difference": 3.396603396603396, "accuracy_ratio": 0.966
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 96.1038961038961, "accuracy_difference": 3.896103896103895, "accuracy_ratio": 0.961038961038961
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 92.007992007992, "accuracy_difference": 7.692307692307693, "accuracy_ratio": 0.9228456913827655
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 80.51948051948052, "accuracy_difference": 19.480519480519476, "accuracy_ratio": 0.8051948051948052
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 29.27072927072927, "accuracy_difference": 69.83016983016984, "accuracy_ratio": 0.29536290322580644
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 89.41058941058941, "accuracy_difference": 10.289710289710285, "accuracy_ratio": 0.8967935871743488
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 93.3066933066933, "accuracy_difference": 6.493506493506501, "accuracy_ratio": 0.9349349349349348
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 88.51148851148851, "accuracy_difference": 11.488511488511492, "accuracy_ratio": 0.8851148851148851
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 90.70929070929071, "accuracy_difference": 8.691308691308691, "accuracy_ratio": 0.9125628140703518
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 71.12887112887113, "accuracy_difference": 28.871128871128874, "accuracy_ratio": 0.7112887112887113
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 90.40959040959041, "accuracy_difference": 9.290709290709287, "accuracy_ratio": 0.9068136272545091
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 82.41758241758242, "accuracy_difference": 16.283716283716274, "accuracy_ratio": 0.8350202429149799
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 91.9080919080919, "accuracy_difference": 7.79220779220779, "accuracy_ratio": 0.9218436873747495
+        }
+    },"cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "target_accuracy": 79.28071928071928, "ff_frac": 0.390625, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 71.22877122877122, "accuracy_difference": 28.571428571428584, "accuracy_ratio": 0.7137137137137136
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 90.40959040959041, "accuracy_difference": 8.8911088911089, "accuracy_ratio": 0.9104627766599597
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 91.008991008991, "accuracy_difference": 8.591408591408594, "accuracy_ratio": 0.913741223671013
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 94.4055944055944, "accuracy_difference": 5.494505494505503, "accuracy_ratio": 0.945
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 89.5104895104895, "accuracy_difference": 10.389610389610397, "accuracy_ratio": 0.8959999999999999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 95.7042957042957, "accuracy_difference": 4.295704295704297, "accuracy_ratio": 0.957042957042957
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 92.4075924075924, "accuracy_difference": 7.4925074925074995, "accuracy_ratio": 0.9249999999999999
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 85.21478521478521, "accuracy_difference": 14.78521478521479, "accuracy_ratio": 0.852147852147852
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 63.03696303696304, "accuracy_difference": 36.66333666333666, "accuracy_ratio": 0.6322645290581163
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 92.8071928071928, "accuracy_difference": 7.192807192807194, "accuracy_ratio": 0.9280719280719281
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 77.82217782217782, "accuracy_difference": 21.278721278721278, "accuracy_ratio": 0.7852822580645161
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 5.594405594405594, "accuracy_difference": 94.1058941058941, "accuracy_ratio": 0.056112224448897796
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 64.43556443556443, "accuracy_difference": 35.364635364635376, "accuracy_ratio": 0.6456456456456455
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 73.42657342657343, "accuracy_difference": 26.573426573426573, "accuracy_ratio": 0.7342657342657343
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 78.12187812187813, "accuracy_difference": 21.278721278721278, "accuracy_ratio": 0.785929648241206
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 57.74225774225774, "accuracy_difference": 42.25774225774226, "accuracy_ratio": 0.5774225774225774
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 68.13186813186813, "accuracy_difference": 31.568431568431564, "accuracy_ratio": 0.6833667334669339
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 79.52047952047953, "accuracy_difference": 19.18081918081917, "accuracy_ratio": 0.805668016194332
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 87.41258741258741, "accuracy_difference": 12.287712287712282, "accuracy_ratio": 0.8767535070140281
+        }
+    },"cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "target_accuracy": 79.76023976023976, "ff_frac": 0.328125, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 75.62437562437563, "accuracy_difference": 24.175824175824175, "accuracy_ratio": 0.7577577577577578
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 95.2047952047952, "accuracy_difference": 4.095904095904103, "accuracy_ratio": 0.9587525150905432
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 96.5034965034965, "accuracy_difference": 3.096903096903091, "accuracy_ratio": 0.9689067201604815
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 91.10889110889111, "accuracy_difference": 8.791208791208788, "accuracy_ratio": 0.912
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 93.9060939060939, "accuracy_difference": 5.994005994006002, "accuracy_ratio": 0.94
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.8991008991009011, "accuracy_ratio": 0.991008991008991
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 97.2027972027972, "accuracy_difference": 2.6973026973027032, "accuracy_ratio": 0.973
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 73.12687312687312, "accuracy_difference": 26.87312687312688, "accuracy_ratio": 0.7312687312687313
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 75.22477522477523, "accuracy_difference": 24.475524475524466, "accuracy_ratio": 0.7545090180360722
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 98.9010989010989, "accuracy_difference": 1.098901098901095, "accuracy_ratio": 0.989010989010989
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 91.9080919080919, "accuracy_difference": 7.192807192807194, "accuracy_ratio": 0.9274193548387096
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 78.52147852147853, "accuracy_difference": 21.178821178821167, "accuracy_ratio": 0.7875751503006013
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 22.277722277722276, "accuracy_difference": 77.52247752247753, "accuracy_ratio": 0.2232232232232232
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 74.12587412587412, "accuracy_difference": 25.87412587412588, "accuracy_ratio": 0.7412587412587412
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 90.00999000999, "accuracy_difference": 9.390609390609399, "accuracy_ratio": 0.9055276381909547
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 60.53946053946054, "accuracy_difference": 39.46053946053946, "accuracy_ratio": 0.6053946053946054
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 56.943056943056945, "accuracy_difference": 42.75724275724275, "accuracy_ratio": 0.5711422845691383
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 94.9050949050949, "accuracy_difference": 3.796203796203798, "accuracy_ratio": 0.9615384615384616
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 97.6023976023976, "accuracy_difference": 2.097902097902093, "accuracy_ratio": 0.9789579158316634
+        }
+    },"cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "target_accuracy": 79.84015984015986, "ff_frac": 0.421875, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 55.24475524475525, "accuracy_difference": 44.55544455544456, "accuracy_ratio": 0.5535535535535535
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 68.13186813186813, "accuracy_difference": 31.168831168831176, "accuracy_ratio": 0.6861167002012072
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 68.83116883116882, "accuracy_difference": 30.769230769230774, "accuracy_ratio": 0.6910732196589768
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 73.42657342657343, "accuracy_difference": 26.473526473526476, "accuracy_ratio": 0.735
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 68.03196803196803, "accuracy_difference": 31.86813186813187, "accuracy_ratio": 0.681
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 90.10989010989012, "accuracy_difference": 9.890109890109883, "accuracy_ratio": 0.9010989010989011
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 90.5094905094905, "accuracy_difference": 9.390609390609399, "accuracy_ratio": 0.9059999999999999
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 53.34665334665335, "accuracy_difference": 46.65334665334665, "accuracy_ratio": 0.5334665334665335
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 84.01598401598402, "accuracy_difference": 15.684315684315678, "accuracy_ratio": 0.842685370741483
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 96.2037962037962, "accuracy_difference": 3.796203796203798, "accuracy_ratio": 0.962037962037962
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 93.00699300699301, "accuracy_difference": 6.093906093906085, "accuracy_ratio": 0.9385080645161291
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 78.22177822177822, "accuracy_difference": 21.478521478521472, "accuracy_ratio": 0.7845691382765532
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 78.22177822177822, "accuracy_difference": 21.578421578421583, "accuracy_ratio": 0.7837837837837838
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 29.170829170829172, "accuracy_difference": 70.82917082917083, "accuracy_ratio": 0.2917082917082917
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 74.52547452547452, "accuracy_difference": 24.875124875124882, "accuracy_ratio": 0.7497487437185929
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 47.052947052947054, "accuracy_difference": 52.947052947052946, "accuracy_ratio": 0.47052947052947053
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 58.841158841158844, "accuracy_difference": 40.85914085914085, "accuracy_ratio": 0.590180360721443
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 91.4085914085914, "accuracy_difference": 7.292707292707291, "accuracy_ratio": 0.9261133603238867
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 86.01398601398601, "accuracy_difference": 13.686313686313682, "accuracy_ratio": 0.8627254509018036
+        }
+    },"cifar20-people": {"unpruned_accuracy": 100.0, "target_accuracy": 80.0, "ff_frac": 0.41796875, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 53.946053946053944, "accuracy_difference": 45.85414585414586, "accuracy_ratio": 0.5405405405405405
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 74.12587412587412, "accuracy_difference": 25.174825174825187, "accuracy_ratio": 0.7464788732394365
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 66.53346653346654, "accuracy_difference": 33.06693306693306, "accuracy_ratio": 0.6680040120361084
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 76.72327672327673, "accuracy_difference": 23.176823176823177, "accuracy_ratio": 0.768
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 69.03096903096903, "accuracy_difference": 30.86913086913087, "accuracy_ratio": 0.691
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 89.01098901098901, "accuracy_difference": 10.989010989010993, "accuracy_ratio": 0.8901098901098901
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 77.52247752247752, "accuracy_difference": 22.377622377622387, "accuracy_ratio": 0.7759999999999999
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 78.72127872127872, "accuracy_difference": 21.278721278721278, "accuracy_ratio": 0.7872127872127872
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 72.42757242757243, "accuracy_difference": 27.272727272727266, "accuracy_ratio": 0.7264529058116233
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 93.50649350649351, "accuracy_difference": 6.493506493506487, "accuracy_ratio": 0.9350649350649352
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 93.9060939060939, "accuracy_difference": 5.194805194805198, "accuracy_ratio": 0.9475806451612903
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 70.22977022977022, "accuracy_difference": 29.47052947052947, "accuracy_ratio": 0.7044088176352705
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 74.62537462537462, "accuracy_difference": 25.174825174825187, "accuracy_ratio": 0.7477477477477477
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 79.12087912087912, "accuracy_difference": 20.879120879120876, "accuracy_ratio": 0.7912087912087913
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 16.883116883116884, "accuracy_difference": 82.51748251748252, "accuracy_ratio": 0.16984924623115577
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 69.53046953046953, "accuracy_difference": 30.46953046953047, "accuracy_ratio": 0.6953046953046953
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 62.23776223776224, "accuracy_difference": 37.462537462537455, "accuracy_ratio": 0.624248496993988
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 86.51348651348651, "accuracy_difference": 12.187812187812185, "accuracy_ratio": 0.8765182186234818
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 82.21778221778222, "accuracy_difference": 17.48251748251748, "accuracy_ratio": 0.8246492985971944
+        }
+    },"cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "target_accuracy": 79.52047952047953, "ff_frac": 0.30859375, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 32.467532467532465, "accuracy_difference": 67.33266733266734, "accuracy_ratio": 0.32532532532532527
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 46.753246753246756, "accuracy_difference": 52.54745254745255, "accuracy_ratio": 0.4708249496981891
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 76.12387612387613, "accuracy_difference": 23.476523476523468, "accuracy_ratio": 0.7642928786359078
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 80.51948051948052, "accuracy_difference": 19.38061938061938, "accuracy_ratio": 0.806
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 77.52247752247752, "accuracy_difference": 22.377622377622387, "accuracy_ratio": 0.7759999999999999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 92.007992007992, "accuracy_difference": 7.9920079920079985, "accuracy_ratio": 0.92007992007992
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 91.70829170829171, "accuracy_difference": 8.191808191808192, "accuracy_ratio": 0.918
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 48.55144855144855, "accuracy_difference": 51.44855144855145, "accuracy_ratio": 0.4855144855144855
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 58.64135864135864, "accuracy_difference": 41.05894105894105, "accuracy_ratio": 0.5881763527054109
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 93.50649350649351, "accuracy_difference": 6.493506493506487, "accuracy_ratio": 0.9350649350649352
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 86.11388611388611, "accuracy_difference": 12.987012987012989, "accuracy_ratio": 0.8689516129032258
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 65.63436563436564, "accuracy_difference": 34.06593406593406, "accuracy_ratio": 0.6583166332665331
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 62.637362637362635, "accuracy_difference": 37.16283716283717, "accuracy_ratio": 0.6276276276276276
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 45.05494505494506, "accuracy_difference": 54.94505494505494, "accuracy_ratio": 0.45054945054945056
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 77.72227772227772, "accuracy_difference": 21.67832167832168, "accuracy_ratio": 0.7819095477386935
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 13.086913086913087, "accuracy_difference": 86.91308691308691, "accuracy_ratio": 0.13086913086913088
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 51.04895104895105, "accuracy_difference": 48.65134865134865, "accuracy_ratio": 0.5120240480961924
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 82.61738261738262, "accuracy_difference": 16.08391608391608, "accuracy_ratio": 0.8370445344129555
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 85.01498501498502, "accuracy_difference": 14.68531468531468, "accuracy_ratio": 0.8527054108216433
+        }
+    },"cifar20-small_mammals": {"unpruned_accuracy": 100.0, "target_accuracy": 80.0, "ff_frac": 0.28125, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 80.71928071928072, "accuracy_difference": 19.080919080919088, "accuracy_ratio": 0.8088088088088088
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 97.6023976023976, "accuracy_difference": 1.6983016983017052, "accuracy_ratio": 0.982897384305835
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 98.5014985014985, "accuracy_difference": 1.098901098901095, "accuracy_ratio": 0.9889669007021064
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 98.3016983016983, "accuracy_difference": 1.5984015984016082, "accuracy_ratio": 0.9839999999999999
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 89.5104895104895, "accuracy_difference": 10.389610389610397, "accuracy_ratio": 0.8959999999999999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.9000999000999, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999000999000999
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 95.8041958041958, "accuracy_difference": 4.095904095904103, "accuracy_ratio": 0.959
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 86.41358641358642, "accuracy_difference": 13.586413586413585, "accuracy_ratio": 0.8641358641358642
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 87.71228771228772, "accuracy_difference": 11.988011988011976, "accuracy_ratio": 0.8797595190380763
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.19980019980019392, "accuracy_ratio": 0.9980019980019981
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 96.6033966033966, "accuracy_difference": 2.497502497502495, "accuracy_ratio": 0.9747983870967742
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 85.41458541458542, "accuracy_difference": 14.285714285714278, "accuracy_ratio": 0.8567134268537074
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 83.41658341658342, "accuracy_difference": 16.383616383616385, "accuracy_ratio": 0.8358358358358359
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 75.72427572427573, "accuracy_difference": 24.275724275724272, "accuracy_ratio": 0.7572427572427572
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 95.00499500499501, "accuracy_difference": 4.395604395604394, "accuracy_ratio": 0.9557788944723619
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 78.32167832167832, "accuracy_difference": 21.67832167832168, "accuracy_ratio": 0.7832167832167832
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 30.46953046953047, "accuracy_difference": 69.23076923076923, "accuracy_ratio": 0.3056112224448898
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 97.40259740259741, "accuracy_difference": 1.298701298701289, "accuracy_ratio": 0.986842105263158
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 98.6013986013986, "accuracy_difference": 1.098901098901095, "accuracy_ratio": 0.9889779559118237
+        }
+    },"cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "target_accuracy": 79.76023976023976, "ff_frac": 0.3984375, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 64.73526473526474, "accuracy_difference": 35.06493506493507, "accuracy_ratio": 0.6486486486486486
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 75.92407592407592, "accuracy_difference": 23.376623376623385, "accuracy_ratio": 0.7645875251509053
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 71.82817182817183, "accuracy_difference": 27.772227772227765, "accuracy_ratio": 0.7211634904714143
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 89.81018981018981, "accuracy_difference": 10.089910089910092, "accuracy_ratio": 0.899
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 84.51548451548452, "accuracy_difference": 15.384615384615387, "accuracy_ratio": 0.846
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 89.1108891108891, "accuracy_difference": 10.889110889110896, "accuracy_ratio": 0.891108891108891
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 89.41058941058941, "accuracy_difference": 10.489510489510494, "accuracy_ratio": 0.895
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 80.81918081918081, "accuracy_difference": 19.180819180819185, "accuracy_ratio": 0.8081918081918081
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 76.32367632367632, "accuracy_difference": 23.37662337662337, "accuracy_ratio": 0.7655310621242485
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 63.73626373626374, "accuracy_difference": 36.26373626373626, "accuracy_ratio": 0.6373626373626373
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 61.83816183816184, "accuracy_difference": 37.26273726273726, "accuracy_ratio": 0.623991935483871
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 64.83516483516483, "accuracy_difference": 34.86513486513486, "accuracy_ratio": 0.6503006012024048
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 79.62037962037962, "accuracy_difference": 20.179820179820183, "accuracy_ratio": 0.7977977977977978
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 68.43156843156844, "accuracy_difference": 31.568431568431564, "accuracy_ratio": 0.6843156843156843
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 84.81518481518482, "accuracy_difference": 14.585414585414583, "accuracy_ratio": 0.8532663316582915
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 62.93706293706294, "accuracy_difference": 37.06293706293706, "accuracy_ratio": 0.6293706293706294
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 79.22077922077922, "accuracy_difference": 20.479520479520474, "accuracy_ratio": 0.7945891783567135
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 1.5984015984015985, "accuracy_difference": 97.1028971028971, "accuracy_ratio": 0.016194331983805668
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 75.22477522477523, "accuracy_difference": 24.475524475524466, "accuracy_ratio": 0.7545090180360722
+        }
+    },"cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "target_accuracy": 78.96103896103897, "ff_frac": 0.390625, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 62.03796203796204, "accuracy_difference": 37.76223776223777, "accuracy_ratio": 0.6216216216216216
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 74.72527472527473, "accuracy_difference": 24.575424575424577, "accuracy_ratio": 0.7525150905432596
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 85.01498501498502, "accuracy_difference": 14.585414585414583, "accuracy_ratio": 0.8535606820461384
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 75.82417582417582, "accuracy_difference": 24.07592407592408, "accuracy_ratio": 0.759
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 78.42157842157842, "accuracy_difference": 21.478521478521486, "accuracy_ratio": 0.7849999999999999
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 66.43356643356644, "accuracy_difference": 33.56643356643356, "accuracy_ratio": 0.6643356643356644
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 68.13186813186813, "accuracy_difference": 31.76823176823177, "accuracy_ratio": 0.6819999999999999
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 74.62537462537462, "accuracy_difference": 25.37462537462538, "accuracy_ratio": 0.7462537462537462
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 69.83016983016984, "accuracy_difference": 29.87012987012986, "accuracy_ratio": 0.7004008016032065
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 52.44755244755245, "accuracy_difference": 47.55244755244755, "accuracy_ratio": 0.5244755244755245
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 82.51748251748252, "accuracy_difference": 16.58341658341658, "accuracy_ratio": 0.8326612903225807
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 53.946053946053944, "accuracy_difference": 45.75424575424575, "accuracy_ratio": 0.5410821643286573
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 70.82917082917083, "accuracy_difference": 28.97102897102897, "accuracy_ratio": 0.7097097097097097
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 75.22477522477523, "accuracy_difference": 24.77522477522477, "accuracy_ratio": 0.7522477522477523
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 58.841158841158844, "accuracy_difference": 40.55944055944056, "accuracy_ratio": 0.5919597989949749
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 53.04695304695305, "accuracy_difference": 46.95304695304695, "accuracy_ratio": 0.5304695304695305
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 71.12887112887113, "accuracy_difference": 28.57142857142857, "accuracy_ratio": 0.7134268537074149
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 77.82217782217782, "accuracy_difference": 20.879120879120876, "accuracy_ratio": 0.7884615384615384
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 0.999000999000999, "accuracy_difference": 98.7012987012987, "accuracy_ratio": 0.010020040080160322
+        }
+    },"cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "target_accuracy": 79.76023976023976, "ff_frac": 0.09375, "cifar20-aquatic_mammals": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.000999000999, "accuracy_difference": 0.7992007992008041, "accuracy_ratio": 0.991991991991992
+        }, "cifar20-fish": {"unpruned_accuracy": 99.3006993006993, "pruned_accuracy": 99.6003996003996, "accuracy_difference": -0.2997002997002909, "accuracy_ratio": 1.0030181086519114
+        }, "cifar20-flowers": {"unpruned_accuracy": 99.6003996003996, "pruned_accuracy": 99.7002997002997, "accuracy_difference": -0.09990009990009696, "accuracy_ratio": 1.0010030090270812
+        }, "cifar20-food_containers": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 98.7012987012987, "accuracy_difference": 1.1988011988012062, "accuracy_ratio": 0.9879999999999999
+        }, "cifar20-fruit_and_vegetables": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.2997002997003051, "accuracy_ratio": 0.997
+        }, "cifar20-household_electrical_devices": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-household_furniture": {"unpruned_accuracy": 99.9000999000999, "pruned_accuracy": 99.8001998001998, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.999
+        }, "cifar20-insects": {"unpruned_accuracy": 100.0, "pruned_accuracy": 100.0, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-large_carnivores": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.6003996003996, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.998997995991984
+        }, "cifar20-large_outdoor": {"unpruned_accuracy": 100.0, "pruned_accuracy": 98.4015984015984, "accuracy_difference": 1.598401598401594, "accuracy_ratio": 0.9840159840159841
+        }, "cifar20-large_omnivores_and_herbivores": {"unpruned_accuracy": 99.1008991008991, "pruned_accuracy": 98.1018981018981, "accuracy_difference": 0.999000999000998, "accuracy_ratio": 0.9899193548387097
+        }, "cifar20-medium_mammals": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 98.6013986013986, "accuracy_difference": 1.098901098901095, "accuracy_ratio": 0.9889779559118237
+        }, "cifar20-non_insect_invertebrates": {"unpruned_accuracy": 99.8001998001998, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.09990009990011117, "accuracy_ratio": 0.9989989989989989
+        }, "cifar20-people": {"unpruned_accuracy": 100.0, "pruned_accuracy": 97.2027972027972, "accuracy_difference": 2.7972027972028, "accuracy_ratio": 0.972027972027972
+        }, "cifar20-reptiles": {"unpruned_accuracy": 99.4005994005994, "pruned_accuracy": 99.1008991008991, "accuracy_difference": 0.2997002997003051, "accuracy_ratio": 0.9969849246231155
+        }, "cifar20-small_mammals": {"unpruned_accuracy": 100.0, "pruned_accuracy": 95.4045954045954, "accuracy_difference": 4.595404595404602, "accuracy_ratio": 0.9540459540459539
+        }, "cifar20-trees": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 99.7002997002997, "accuracy_difference": 0.0, "accuracy_ratio": 1.0
+        }, "cifar20-veh1": {"unpruned_accuracy": 98.7012987012987, "pruned_accuracy": 98.6013986013986, "accuracy_difference": 0.09990009990009696, "accuracy_ratio": 0.9989878542510122
+        }, "cifar20-veh2": {"unpruned_accuracy": 99.7002997002997, "pruned_accuracy": 79.72027972027972, "accuracy_difference": 19.980019980019975, "accuracy_ratio": 0.7995991983967936
+        }
+    }
+}

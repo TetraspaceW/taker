@@ -6,6 +6,7 @@ from taker.data_classes import PruningConfig, EvalConfig
 from taker.activations import get_top_frac
 from taker.model import Model
 from taker.texts import infer_dataset_config
+import time
 
 from nm_dataset_names import cifar20_datasets
 
@@ -188,13 +189,18 @@ def compareEvaluations(datasets):
             final_data[dataset1],
         )
 
+        # append results to outputs.log
+        with open("outputs.log", "a") as f:
+            f.write(f"{dataset1} {time.time()}\n")
+            f.write(f"{final_data[dataset1]}\n")
+
     return final_data
 
 
 startTime = datetime.now()
 print("run started at: ", startTime)
 answer = compareEvaluations(datasets)
-saved_file_name = save_data_dict("hf", answer, "cross_pruning_accuracy")
+saved_file_name = save_data_dict("Cifar100", answer, "cross_pruning_accuracy")
 print("saved to: ", saved_file_name, "data: ", answer)
 endTime = datetime.now()
 print("run ended at: ", endTime, "time elapsed: ", endTime - startTime)
