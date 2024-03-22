@@ -3698,15 +3698,16 @@ answer_cifar20 = {
 
 
 def save_data_dict(model_size: str, data: any, name: str):
+    path = os.path.dirname(os.path.abspath(__file__)) 
     now = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
-    os.makedirs(f"saved_tensors/{model_size}", exist_ok=True)
-    filename = f"saved_tensors/{model_size}/{name}-{model_size}-recent.pt"
+    os.makedirs(f"{path}/saved_tensors/{model_size}", exist_ok=True)
+    filename = f"{path}/saved_tensors/{model_size}/{name}-{model_size}-recent.pt"
     torch.save(data, filename)
     print(f"Saved {filename} to {model_size}")
-    filename = f"saved_tensors/{model_size}/{name}-{model_size}-{now}.pt"
+    filename = f"{path}/saved_tensors/{model_size}/{name}-{model_size}-{now}.pt"
     torch.save(data, filename)
     print(f"Saved {filename} to {model_size}")
     return filename
 
 
-filename = save_data_dict("hf", answer, "crossevaluation_results")
+filename = save_data_dict("Cifar100", answer_cifar20, "crossevaluation_results")
