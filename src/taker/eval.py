@@ -2,7 +2,8 @@ from typing import Optional, Tuple, Union, List, Callable
 import numpy as np
 import torch
 from torch import Tensor
-from datasets import load_dataset, get_dataset_config_names, Dataset
+from datasets import load_dataset, get_dataset_config_names
+from torch.utils.data import DataLoader, Dataset
 from welford_torch import Welford
 from tqdm import tqdm
 from .data_classes import EvalConfig, EvalOutput, EvalAllOutput, RawAccuracyData
@@ -116,7 +117,7 @@ class Generators:
 
         if c.masked_token_id is None:
             c.masked_token_id = \
-                model.get_ids(text=c.masked_token_string)[0, 1].item()
+                model.get_ids(text=c.masked_token_str)[0, 1].item()
 
         def run_random_masking(orig_ids):
             # Number of random elements to select
@@ -151,7 +152,7 @@ class Generators:
             expected_ids = orig_ids[..., indices_chosen]
             logits = logits[..., indices_chosen, :]
 
-            yield (logits, expected_ids)
+            yield (logits, expected_ids, {})
 
     @staticmethod
     def get_many_generated_texts_generator(model, eval_config):
@@ -333,21 +334,64 @@ class ImageGenerators(Generators):
 
         dataset = prepare_dataset(eval_config)
 
-        for data in dataset:
+        # If streaming, we need to load the data in an inefficient way
+        if eval_config.streaming:
+            for data in dataset:
+                # predict next token from text
+                img   = data[eval_config.dataset_image_key]
+                label = data[eval_config.dataset_image_label_key]
+
+                with torch.no_grad():
+                    try:
+                        inputs = model.processor(img, return_tensors="pt")
+                    except ValueError:
+                        print("Skipping image due to error.")
+                        continue
+                    inputs = inputs.to(model.device)
+                    logits = model.predictor(**inputs).logits.unsqueeze(0)
+                expected_ids = torch.tensor([[label]]).to(model.device)
+
+                yield (logits, expected_ids, {})
+
+            return # end of manual dataset streaming
+
+        # more efficient batched method
+        class LazyTransformDataset(Dataset):
+            def __init__(self, hf_dataset, transform=None, indices=None):
+                self.hf_dataset = hf_dataset
+                self.transform = transform
+                self.indices = np.array(list(range(len(self.hf_dataset))) if indices is None else indices)
+
+            def __getitem__(self, idx):
+                sub_index = self.indices[idx]
+                sub_index = int(sub_index)
+                item = self.hf_dataset[sub_index]
+                if self.transform:
+                    item["img"] = self.transform(item["img"])
+                    item["img"]["pixel_values"] = item["img"]["pixel_values"][0]
+                return item
+
+            def __len__(self):
+                return len(self.indices)
+
+        # init wrapper that allows batching
+        transform = lambda img: model.processor(img, return_tensors="pt")
+        lazy_dataset = LazyTransformDataset(dataset, transform)
+        dataloader = DataLoader(lazy_dataset, batch_size=32, num_workers=1)
+
+        # run batched data
+        for data in dataloader:
             # predict next token from text
             img   = data[eval_config.dataset_image_key]
+            inputs=img
             label = data[eval_config.dataset_image_label_key]
             with torch.no_grad():
-                try:
-                    inputs = model.processor(img, return_tensors="pt")
-                except ValueError:
-                    print("Skipping image due to error.")
-                    continue
                 inputs = inputs.to(model.device)
-                logits = model.predictor(**inputs).logits.unsqueeze(0)
-            expected_ids = torch.tensor([[label]]).to(model.device)
+                logits = model.predictor(**inputs).logits.unsqueeze(1)
+            expected_ids = label.unsqueeze(dim=-1).to(model.device)
 
             yield (logits, expected_ids, {})
+
 
     @staticmethod
     def return_model_as_generator(
@@ -612,6 +656,9 @@ def run_evaluation(model: Model,
         get_generator: Callable = None,
         dataset_evaluator: Callable = None,
         ):
+    # TODO: make more general for other masked models
+    if model.cfg.architecture == 'RobertaForMaskedLM':
+        eval_config.masked_model = True
 
     auto_generator, auto_evaluator = choose_functions(eval_config)
     if get_generator is None:

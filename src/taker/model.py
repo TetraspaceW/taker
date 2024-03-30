@@ -10,6 +10,7 @@ from torch import Tensor
 from accelerate import Accelerator
 from datasets import Dataset
 from collections import defaultdict
+import copy
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
@@ -64,6 +65,7 @@ class Model():
             svd_attn: bool = False,
             tokenizer_repo: Optional[str] = None,
             mask_fn: str = "step",
+            use_inverse_out: bool = False,
         ):
         """
         OPT Model with functions for extracting activations.
@@ -123,8 +125,10 @@ class Model():
         self.layers: list = None
 
         # Hooking into the model
+        self.use_inverse_out: bool = use_inverse_out
         self.hook_handles = defaultdict(lambda : defaultdict(dict))
         self.activations: dict = None
+        self.do_activations: dict = None
         self.masks: dict = None
         self.actadds: dict = None
         self.post_biases: dict = None
@@ -146,30 +150,50 @@ class Model():
         self.model_repo = model_repo
         self.tokenizer_repo = model_repo if tokenizer_repo is None else tokenizer_repo
 
-    def init_model( self, model_repo: Optional[str] = None ):
+    def import_models(self,
+            tokenizer=None,
+            predictor=None,
+            processor=None
+        ):
+        # Import model components (Default: Causal Language Models)
+        device_map = "auto" if self.use_accelerator else self.device
+
+        if self.cfg.model_modality == "vision":
+            from transformers import AutoImageProcessor, AutoModelForImageClassification
+            self.tokenizer = None \
+                if tokenizer is None else tokenizer
+            self.processor = self.init_image_processor(device_map) \
+                if processor is None else self.processor
+            self.predictor = AutoModelForImageClassification.from_pretrained(
+                self.model_repo, device_map=device_map, **self.dtype_args) \
+                if predictor is None else predictor
+        elif self.cfg.model_modality == "language":
+            self.tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_repo, legacy=False) \
+                if tokenizer is None else tokenizer
+            self.processor = None \
+                if processor is None else processor
+            self.predictor = AutoModelForCausalLM.from_pretrained(
+                self.model_repo, device_map=device_map, **self.dtype_args) \
+                if predictor is None else predictor
+
+        else:
+            raise NotImplementedError(f"Model modality {self.cfg.model_modality} not implemented.")
+
+    def init_model( self,
+            model_repo: Optional[str] = None,
+            do_model_import: bool = True,
+            **kwargs,
+        ):
         if not model_repo is None:
             self.set_repo(model_repo)
         # Initialize model (with or without accelerator)
-        device_map = "auto" if self.use_accelerator else None
 
         # Import model config
         self.cfg = convert_hf_model_config(self.model_repo)
         self.cfg.is_low_precision = self.dtype_map.is_low_precision
 
-        # Import model components (Default: Causal Language Models)
-        if self.cfg.model_modality == "vision":
-            from transformers import AutoImageProcessor, AutoModelForImageClassification
-            self.tokenizer = None,
-            self.init_image_processor(device_map)
-            self.predictor = AutoModelForImageClassification.from_pretrained(
-                self.model_repo, device_map=device_map, **self.dtype_args)
-        elif self.cfg.model_modality == "language":
-            self.tokenizer = AutoTokenizer.from_pretrained(self.tokenizer_repo, legacy=False)
-            self.processor = None
-            self.predictor = AutoModelForCausalLM.from_pretrained(
-                self.model_repo, device_map=device_map, **self.dtype_args)
-        else:
-            raise NotImplementedError(f"Model modality {self.cfg.model_modality} not implemented.")
+        if do_model_import:
+            self.import_models(**kwargs)
 
         # Build map for working with model
         self.map = ModelMap(self.predictor, self.cfg)
@@ -186,6 +210,12 @@ class Model():
             "ff": {},
             "mlp_pre_out": {}
         }
+        self.do_activations = {
+            "attn": True,
+            "attn_pre_out": True,
+            "ff": True,
+            "mlp_pre_out": True
+        }
         self.masks = {}
         self.actadds = {}
         self.post_biases = {}
@@ -198,7 +228,7 @@ class Model():
             return self
         if self.svd_attn:
             self.svd_attention_layers()
-        else:
+        elif self.use_inverse_out:
             self.register_inverse_out_proj()
         return self
 
@@ -213,6 +243,7 @@ class Model():
             from .vit_processor import SsdVitProcessor
             self.processor = SsdVitProcessor()
 
+        return self.processor
 
     def init_vit(self):
         from transformers import ViTModel, ViTForImageClassification, AutoConfig
@@ -225,6 +256,29 @@ class Model():
         model.vit = vit
 
         return model.to(self.device)
+
+    def __deepcopy__(self, memo):
+        m = copy.copy(self)
+        try:
+            m.import_models(
+                tokenizer = copy.deepcopy(self.tokenizer, memo),
+                processor = copy.deepcopy(self.processor, memo),
+                predictor = copy.deepcopy(self.predictor, memo),
+            )
+        except:
+            print("Error importing old models, importing fresh models instead")
+            m.import_models()
+        # TODO: support copy of hook parameters
+        m.remove_all_hooks()
+        m.hook_handles = defaultdict(lambda : defaultdict(dict))
+        m.activations = None
+        m.masks = None
+        m.actadds = None
+        m.post_biases = None
+        m.attn_pre_out_mode = None
+        m.mlp_pre_out_mode = None
+        m.init_model(do_model_import=False)
+        return m
 
     def show_details( self, verbose=True ):
         if verbose:
@@ -255,6 +309,18 @@ class Model():
             tensor_list = [ t.to(self.output_device) for t in tensor_list ]
         return torch.stack( tensor_list )
 
+    def remove_hooks_from(self, submodel):
+        # Recursively visit all modules and submodules
+        for module in submodel.modules():
+            # Hooks are stored in ._forward_pre_hooks and ._forward_hooks
+            hooks = list(module._forward_pre_hooks.keys()) + list(module._forward_hooks.keys())
+            for hook_id in hooks:
+                module._forward_pre_hooks.pop(hook_id, None)
+                module._forward_hooks.pop(hook_id, None)
+
+    def remove_all_hooks(self):
+        self.remove_hooks_from(self.predictor)
+
     def save_hook_handle(self,
             new_hook_handle, # The output handle of register_forward_hook()
             hook_type: str, # What type of hook? activations, mask, input, ...
@@ -280,12 +346,16 @@ class Model():
         def hook(_model, _input, output):
             if not isinstance(output, tuple):
                 return
+            if not self.do_activations[component]:
+                return
             self.activations[component][name] = detached(output)
         return hook
 
     def build_input_hook(self, component: str, name: str):
         def hook(_module, _input):
             if not isinstance(_input, tuple):
+                return
+            if not self.do_activations[component]:
                 return
             self.activations[component][name] = detached(_input)
         return hook
@@ -305,8 +375,10 @@ class Model():
             # Listen to inputs for FF_out
             if self.mlp_pre_out_mode == "hook":
                 fc2 = layer["mlp.out_proj"]
+                component_name = "mlp_pre_out"
                 name = pad_zeros( layer_index ) + "-mlp-pre-out"
-                _handle = fc2.register_forward_pre_hook(self.build_input_hook("mlp_pre_out", name))
+                self.do_activations[component_name] = True
+                _handle = fc2.register_forward_pre_hook(self.build_input_hook(component_name, name))
                 self.save_hook_handle(_handle, "input-read", "mlp.out_proj", layer_index)
 
 
@@ -314,7 +386,9 @@ class Model():
             if self.attn_pre_out_mode == "hook":
                 attn_o = layer["attn.out_proj"]
                 name = pad_zeros( layer_index ) + "-attention-out"
-                _handle = attn_o.register_forward_pre_hook(self.build_input_hook("attn_pre_out", name))
+                component_name = "attn_pre_out"
+                self.do_activations[component_name] = True
+                _handle = attn_o.register_forward_pre_hook(self.build_input_hook(component_name, name))
                 self.save_hook_handle(_handle, "input-read", "attn.out_proj", layer_index)
 
         print( f" - Registered {layer_index+1} Attention Layers" )
@@ -1389,7 +1463,8 @@ class Model():
             input_ids: Masked tokenized IDs
             indices: Indices of tokens modified
         """
-        mask_id  = self.get_ids("<mask>")[0, 1].item()
+        #mask_id  = self.get_ids("<mask>")[0, 1].item()
+        mask_id = self.tokenizer.mask_token_id
 
         # get initial input ids
         orig_ids = self.get_ids(text) if input_ids is None else input_ids
