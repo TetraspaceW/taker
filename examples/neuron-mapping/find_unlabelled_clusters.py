@@ -1,5 +1,6 @@
 from taker.data_classes import PruningConfig
 from taker.model import Model
+from taker.prune import prune_and_evaluate, run_pruning
 
 c = PruningConfig(
     wandb_project="testing",  # repo to push results to
@@ -14,9 +15,9 @@ c = PruningConfig(
     focus="cifar20-split",  # the “reference” dataset
     cripple="cifar20-aquatic_mammals",  # the “unlearned” dataset
     additional_datasets=tuple(),  # any extra datasets to evaluate on
-    recalculate_activations=False,  # iterative vs non-iterative
+    recalculate_activations=True,  # iterative vs non-iterative
     dtype="fp32",
-    n_steps=1,
+    n_steps=10,
 )
 
 model = Model(
